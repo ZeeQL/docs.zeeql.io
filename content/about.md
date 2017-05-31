@@ -8,14 +8,11 @@ an email to tell us why this is crap (or not?).
 - [info@zeeql.io](mailto:info@zeeql.io)
 
 
-### Status
+### MkDocs
 
-- Consider the version numbers.
-
-- We chose the traditional Swift approach:
-  Make something barely usable, though demoable,
-  and release it with a 3.0 version tag.
-  Then hope that the community kicks in and fills open spots.
+Built with <a href="http://www.mkdocs.org">MkDocs</a> 
+using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> 
+provided by <a href="https://readthedocs.org">Read the Docs</a>.
 
   
 ### Who
