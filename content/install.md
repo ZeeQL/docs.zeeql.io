@@ -1,6 +1,6 @@
 # ZeeQL Installation
 
-TBD
+> Work in progress. Stay tuned.
 
 ## Install on Linux
 

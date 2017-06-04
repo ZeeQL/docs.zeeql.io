@@ -13,6 +13,10 @@ theme_dir:   custom_theme
 extra_css:   [ extra.css ]
 
 pages:
-  - 'Introduction': 'index.md'
-  - 'About':        'about.md'
+  - 'Introduction':    'index.md'
+  - 'Design':          'design.md'
+  - 'Embed SQL':       'embedsql.md'
+  - 'Settings':        'settings.md'
+  - 'Troubleshooting': 'troubleshooting.md'
+  - 'About':           'about.md'
   

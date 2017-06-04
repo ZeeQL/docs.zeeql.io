@@ -1,5 +1,7 @@
 # ZeeQL Documentation
 
+> Work in progress. Stay tuned.
+
 Dramatically deploy top-line functionalities before robust processes. Intrinsicly harness client-based "outside the box" thinking rather than ethical customer service. Dramatically extend cooperative alignments without holistic sources. Conveniently visualize unique alignments before low-risk high-yield expertise. 
 
 Completely mesh interoperable expertise after extensible imperatives. Conveniently benchmark backend supply chains and dynamic sources. Holisticly reintermediate vertical content after functional best practices. Professionally syndicate granular mindshare for adaptive process improvements. 
