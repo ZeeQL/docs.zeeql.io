@@ -8,7 +8,7 @@
   
   <meta name="author" content="ZeeZide GmbH">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - ZeeQL</title>
+  <title>Design - ZeeQL</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
-    var mkdocs_page_url = "/about/";
+    var mkdocs_page_name = "Design";
+    var mkdocs_page_input_path = "design.md";
+    var mkdocs_page_url = "/design/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -63,9 +63,23 @@
     <a class="" href="..">Introduction</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../design/">Design</a>
+    <a class="current" href="./">Design</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#zeeql-framework-design">ZeeQL Framework Design</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#adaptor-level">Adaptor Level</a></li>
+        
+            <li><a class="toctree-l3" href="#database-level">Database Level</a></li>
+        
+        </ul>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,21 +97,9 @@
     <a class="" href="../troubleshooting/">Troubleshooting</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">About</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#contact">Contact</a></li>
-    
-
-    <li class="toctree-l2"><a href="#mkdocs">MkDocs</a></li>
-    
-
-    <li class="toctree-l2"><a href="#who">Who</a></li>
-    
-
-    </ul>
+    <a class="" href="../about/">About</a>
 	    </li>
           
         </ul>
@@ -122,7 +124,7 @@
     
       
     
-    <li>About</li>
+    <li>Design</li>
     
     <li class="wy-breadcrumbs-aside">
       <a href="http://zeeql.io/">
@@ -135,30 +137,38 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="contact">Contact</h3>
-<p>Hey, we love feedback. Join the mailing list, Slack channel or just drop us
-an email to tell us why this is crap (or not?).</p>
-<ul>
-<li><a href="https://groups.google.com/d/forum/mod_swift">Mailing List</a></li>
-<li><a href="http://slack.noze.io">Slack</a></li>
-<li><a href="mailto:info@zeeql.io">info@zeeql.io</a></li>
-</ul>
-<h3 id="mkdocs">MkDocs</h3>
-<p>Built with <a href="http://www.mkdocs.org">MkDocs</a> 
-using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> 
-provided by <a href="https://readthedocs.org">Read the Docs</a>.</p>
-<h3 id="who">Who</h3>
-<p>ZeeQL is brought to you by the
-<a href="http://zeezide.de">ZeeZide</a> GmbH.
-<a href="http://zeezide.com/contact.html">Imprint</a>.</p>
+                <h1 id="zeeql-framework-design">ZeeQL Framework Design</h1>
+<blockquote>
+<p>Work in progress. Stay tuned.</p>
+</blockquote>
+<p>ZeeQL is a Swift ORM / database access library primarily inspired by EOF,
+and in consequence CoreData. Adding some ActiveRecord ideas.</p>
+<p>The basic setup is that Access has two levels of abstraction:
+- adaptor  level (<code>Adaptor</code>,  <code>AdaptorChannel</code>)
+- database level (<code>Database</code>, <code>DatabaseChannel</code>, <code>DatabaseDataSource</code>)</p>
+<p>In general it is recommended to write a Model or a Model pattern, and then
+use the DatabaseDataSource to fetch mapped objects.
+However, for simple SQL you can also do that in rather convenient ways at the
+adaptor level.</p>
+<p>Important: to inject raw SQL you don't have to go down to adaptor level. You
+have various ways to embed SQL in the model and thats the recommended way to
+do it. <a href="../embedsql/">Raw SQL Injection Notes</a>.</p>
+<h3 id="adaptor-level">Adaptor Level</h3>
+<p>The adaptor level is a relatively thin wrapper around the client libs, e.g.
+Apache DBD, which provides some convenience methods, model reflection etc.</p>
+<p>TBD: document</p>
+<h3 id="database-level">Database Level</h3>
+<p>TBD: document</p>
               
             </div>
           </div>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../embedsql/" class="btn btn-neutral float-right" title="Embed SQL">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../troubleshooting/" class="btn btn-neutral" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href=".." class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -177,8 +187,10 @@ provided by <a href="https://readthedocs.org">Read the Docs</a>.</p>
           <a href="https://github.com/zeeql/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../troubleshooting/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../embedsql/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
