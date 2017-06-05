@@ -14,9 +14,5 @@ extra_css:   [ extra.css ]
 
 pages:
   - 'Introduction':    'index.md'
-  - 'Design':          'design.md'
-  - 'Embed SQL':       'embedsql.md'
-  - 'Settings':        'settings.md'
-  - 'Troubleshooting': 'troubleshooting.md'
   - 'About':           'about.md'
   
