@@ -2,98 +2,13 @@
     "docs": [
         {
             "location": "/", 
-            "text": "ZeeQL Documentation\n\n\n\n\nWork in progress. Stay tuned.\n\n\n\n\nDramatically deploy top-line functionalities before robust processes. Intrinsicly harness client-based \"outside the box\" thinking rather than ethical customer service. Dramatically extend cooperative alignments without holistic sources. Conveniently visualize unique alignments before low-risk high-yield expertise. \n\n\nCompletely mesh interoperable expertise after extensible imperatives. Conveniently benchmark backend supply chains and dynamic sources. Holisticly reintermediate vertical content after functional best practices. Professionally syndicate granular mindshare for adaptive process improvements. \n\n\nEfficiently myocardinate mission-critical leadership vis-a-vis competitive markets. Dramatically brand equity invested scenarios and best-of-breed meta-services. Interactively evisculate flexible synergy and technically sound platforms. Seamlessly grow future-proof expertise rather than premium potentialities. \n\n\nUniquely leverage other's flexible niche markets with emerging functionalities. Credibly deliver extensible opportunities without functional initiatives.", 
+            "text": "ZeeQL Documentation\n\n\n\n\nWork in progress. Stay tuned.\n\n\n\n\nThe ZeeQL (EOF/CoreData/AR like) Database Toolkit for Swift.", 
             "title": "Introduction"
         }, 
         {
             "location": "/#zeeql-documentation", 
-            "text": "Work in progress. Stay tuned.   Dramatically deploy top-line functionalities before robust processes. Intrinsicly harness client-based \"outside the box\" thinking rather than ethical customer service. Dramatically extend cooperative alignments without holistic sources. Conveniently visualize unique alignments before low-risk high-yield expertise.   Completely mesh interoperable expertise after extensible imperatives. Conveniently benchmark backend supply chains and dynamic sources. Holisticly reintermediate vertical content after functional best practices. Professionally syndicate granular mindshare for adaptive process improvements.   Efficiently myocardinate mission-critical leadership vis-a-vis competitive markets. Dramatically brand equity invested scenarios and best-of-breed meta-services. Interactively evisculate flexible synergy and technically sound platforms. Seamlessly grow future-proof expertise rather than premium potentialities.   Uniquely leverage other's flexible niche markets with emerging functionalities. Credibly deliver extensible opportunities without functional initiatives.", 
+            "text": "Work in progress. Stay tuned.   The ZeeQL (EOF/CoreData/AR like) Database Toolkit for Swift.", 
             "title": "ZeeQL Documentation"
-        }, 
-        {
-            "location": "/design/", 
-            "text": "ZeeQL Framework Design\n\n\n\n\nWork in progress. Stay tuned.\n\n\n\n\nZeeQL is a Swift ORM / database access library primarily inspired by EOF,\nand in consequence CoreData. Adding some ActiveRecord ideas.\n\n\nThe basic setup is that Access has two levels of abstraction:\n- adaptor  level (\nAdaptor\n,  \nAdaptorChannel\n)\n- database level (\nDatabase\n, \nDatabaseChannel\n, \nDatabaseDataSource\n)\n\n\nIn general it is recommended to write a Model or a Model pattern, and then\nuse the DatabaseDataSource to fetch mapped objects.\nHowever, for simple SQL you can also do that in rather convenient ways at the\nadaptor level.\n\n\nImportant: to inject raw SQL you don't have to go down to adaptor level. You\nhave various ways to embed SQL in the model and thats the recommended way to\ndo it. \nRaw SQL Injection Notes\n.\n\n\nAdaptor Level\n\n\nThe adaptor level is a relatively thin wrapper around the client libs, e.g.\nApache DBD, which provides some convenience methods, model reflection etc.\n\n\nTBD: document\n\n\nDatabase Level\n\n\nTBD: document", 
-            "title": "Design"
-        }, 
-        {
-            "location": "/design/#zeeql-framework-design", 
-            "text": "Work in progress. Stay tuned.   ZeeQL is a Swift ORM / database access library primarily inspired by EOF,\nand in consequence CoreData. Adding some ActiveRecord ideas.  The basic setup is that Access has two levels of abstraction:\n- adaptor  level ( Adaptor ,   AdaptorChannel )\n- database level ( Database ,  DatabaseChannel ,  DatabaseDataSource )  In general it is recommended to write a Model or a Model pattern, and then\nuse the DatabaseDataSource to fetch mapped objects.\nHowever, for simple SQL you can also do that in rather convenient ways at the\nadaptor level.  Important: to inject raw SQL you don't have to go down to adaptor level. You\nhave various ways to embed SQL in the model and thats the recommended way to\ndo it.  Raw SQL Injection Notes .", 
-            "title": "ZeeQL Framework Design"
-        }, 
-        {
-            "location": "/design/#adaptor-level", 
-            "text": "The adaptor level is a relatively thin wrapper around the client libs, e.g.\nApache DBD, which provides some convenience methods, model reflection etc.  TBD: document", 
-            "title": "Adaptor Level"
-        }, 
-        {
-            "location": "/design/#database-level", 
-            "text": "TBD: document", 
-            "title": "Database Level"
-        }, 
-        {
-            "location": "/embedsql/", 
-            "text": "Raw SQL Injection Notes\n\n\n\n\nWork in progress. Stay tuned.\n\n\n\n\nWhen your database schema becomes more complex, you may want to embed raw SQL\nin your ORM queries.\nZeeQL supports various ways to do this.\n\n\nTBD: cleanup \n organize\n\n\nCustomQueryExpressionHintKey\n\n\nIMPORTANT\n:\npatterns use \n%\n (e.g. \n%(oid)s\n), NOT the \n$abc\n syntax of \nQualifier\ns\n- the hint is being processed by \nSQLExpression\n\n  - you can also use \nSQLQualifier\n with \nSQLExpression\n (which uses the\n    \n$abc\n binding syntax)\n\n\nRaw SQL Patterns\n\n\nIf the 'CustomQueryExpressionHintKey' is set, the value of this key is\nprocessed as a keyvalue-format pattern to produce the SQL. SQLExpression\nwill still prepare and provide the parts of the SQL (qualifiers, sorts)\nbut the assembly will be done using the SQL pattern.\n\n\nExample:\n\n\nSELECT COUNT(*) FROM %(tables)s WHERE %(where)s %(limit)s\n\n\n\nKeys:\n- select       eg SELECT or SELECT DISTINCT\n- columns      eg BASE.lastname, BASE.firstname\n- tables       eg BASE.customer\n- basetable    eg customer\n- qualifier    eg lastname LIKE 'Duck%'\n- orderings    eg lastname ASC, firstname DESC\n- limit        eg OFFSET 0 LIMIT 1\n- lock         eg FOR UPDATE\n- joins\n\n\nCompound:\n- where        eg WHERE lastname LIKE 'Duck%'\n- andQualifier eg AND lastname LIKE 'Duck%'   (nothing w/o qualifier) \n- orQualifier  eg OR  lastname LIKE 'Duck%'   (nothing w/o qualifier) \n- orderby      eg ORDER BY mod_date DESC (nothing w/o orderings) \n\n\nNote: when using joins in a query, the base table should be named\n      'BASE', so that all the other features can be used.\n\n\n\n\nCustomQueryExpressionHintKey\n is also set by \nDatabaseDataSource\n\n  \nfetchObjectsFor(sql:)\n\n\n\n\nCustomQueryExpressionHintKeyBindPattern\n\n\nExample: \n%%(tables)s WHERE id = %(id)s\n\n\nIn Code: \nfs.fetchSpecificationWith(bindings: [ \"id\":  1] )\n\n\n=\n CustomQueryExpressionHintKey = \n%(tables)s WHERE id = 1;\n\n\n\n\nformatting is done using \nKeyValueStringFormatter.format()\n\n\nTBD, SEC: do we need to be careful about SQL injection?\n\n\n\n\nUsage in an XML Model:\n\n\nfetch name=\ncount\n rawrows=\ntrue\n\n  \nsql pattern=\ntrue/false\n\n    %(select)s COUNT(*) FROM %(tables)s %(where)s\n  \n/sql\n\n\n/fetch\n\n\n\n\n\nImportant: when using patterns, you need to escape SQL keys twice, eg:\n           %%(select)s COUNT(*) FROM %%(table)s WHERE oid=%(oid)i\n\n\nSQLQualifier\n\n\nExample: \n\"login = %@ OR SQL[balance IN $balance1, $balance2]\"\n\n\nThe SQL qualifier is getting split into parts, in this case:\n- \"balance IN \"\n- $balance1 (QualifierVariable name=balance1)\n- \", \"\n- $balance2 (QualifierVariable name=balance2)\n\n\nIt is being processed in \nSQLExpression\n (sqlStringForRawQualifier(q)),\nat this point all QualifierVariable's are resolved! (bindings to the\nFetchSpecification)\n\n\nDo not confuse SQL binding variables with FetchSpecification bindings!\n\n\nSQLValue\n\n\n\n\nTo inject single values\n\n\nCurrently only supported by \nSQLExpression.addUpdateListAttribute\n\n\n\n\nExample:\n\n\nlet values = [\n  \nstatus\n  : \ncreated\n,\n  \nmodDate\n : RawSQLValue(\nNOW()\n)\n]\nlet op = AdaptorOperation(entity)\n...\nop.changedValues = values\n\nlet affected = channel.performAdaptorOperationN(op)\n\n\n\n\nAttribute Formats\n\n\nOne can also inject \nreadformat\n/\nwriteformat\n SQL, e.g. to change all values\nto lowercase on writes:\n\n\nwriteformat=\"LOWER(TRIM(%P))\"\n\n\n\nor case-stuff, like::\n\n\nreadformat=\"CASE %P WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' END\"", 
-            "title": "Embed SQL"
-        }, 
-        {
-            "location": "/embedsql/#raw-sql-injection-notes", 
-            "text": "Work in progress. Stay tuned.   When your database schema becomes more complex, you may want to embed raw SQL\nin your ORM queries.\nZeeQL supports various ways to do this.  TBD: cleanup   organize", 
-            "title": "Raw SQL Injection Notes"
-        }, 
-        {
-            "location": "/embedsql/#customqueryexpressionhintkey", 
-            "text": "IMPORTANT :\npatterns use  %  (e.g.  %(oid)s ), NOT the  $abc  syntax of  Qualifier s\n- the hint is being processed by  SQLExpression \n  - you can also use  SQLQualifier  with  SQLExpression  (which uses the\n     $abc  binding syntax)  Raw SQL Patterns  If the 'CustomQueryExpressionHintKey' is set, the value of this key is\nprocessed as a keyvalue-format pattern to produce the SQL. SQLExpression\nwill still prepare and provide the parts of the SQL (qualifiers, sorts)\nbut the assembly will be done using the SQL pattern.  Example:  SELECT COUNT(*) FROM %(tables)s WHERE %(where)s %(limit)s  Keys:\n- select       eg SELECT or SELECT DISTINCT\n- columns      eg BASE.lastname, BASE.firstname\n- tables       eg BASE.customer\n- basetable    eg customer\n- qualifier    eg lastname LIKE 'Duck%'\n- orderings    eg lastname ASC, firstname DESC\n- limit        eg OFFSET 0 LIMIT 1\n- lock         eg FOR UPDATE\n- joins  Compound:\n- where        eg WHERE lastname LIKE 'Duck%'\n- andQualifier eg AND lastname LIKE 'Duck%'   (nothing w/o qualifier) \n- orQualifier  eg OR  lastname LIKE 'Duck%'   (nothing w/o qualifier) \n- orderby      eg ORDER BY mod_date DESC (nothing w/o orderings)   Note: when using joins in a query, the base table should be named\n      'BASE', so that all the other features can be used.   CustomQueryExpressionHintKey  is also set by  DatabaseDataSource \n   fetchObjectsFor(sql:)", 
-            "title": "CustomQueryExpressionHintKey"
-        }, 
-        {
-            "location": "/embedsql/#customqueryexpressionhintkeybindpattern", 
-            "text": "Example:  %%(tables)s WHERE id = %(id)s  In Code:  fs.fetchSpecificationWith(bindings: [ \"id\":  1] )  =  CustomQueryExpressionHintKey =  %(tables)s WHERE id = 1;   formatting is done using  KeyValueStringFormatter.format()  TBD, SEC: do we need to be careful about SQL injection?   Usage in an XML Model:  fetch name= count  rawrows= true \n   sql pattern= true/false \n    %(select)s COUNT(*) FROM %(tables)s %(where)s\n   /sql  /fetch   Important: when using patterns, you need to escape SQL keys twice, eg:\n           %%(select)s COUNT(*) FROM %%(table)s WHERE oid=%(oid)i", 
-            "title": "CustomQueryExpressionHintKeyBindPattern"
-        }, 
-        {
-            "location": "/embedsql/#sqlqualifier", 
-            "text": "Example:  \"login = %@ OR SQL[balance IN $balance1, $balance2]\"  The SQL qualifier is getting split into parts, in this case:\n- \"balance IN \"\n- $balance1 (QualifierVariable name=balance1)\n- \", \"\n- $balance2 (QualifierVariable name=balance2)  It is being processed in  SQLExpression  (sqlStringForRawQualifier(q)),\nat this point all QualifierVariable's are resolved! (bindings to the\nFetchSpecification)  Do not confuse SQL binding variables with FetchSpecification bindings!", 
-            "title": "SQLQualifier"
-        }, 
-        {
-            "location": "/embedsql/#sqlvalue", 
-            "text": "To inject single values  Currently only supported by  SQLExpression.addUpdateListAttribute   Example:  let values = [\n   status   :  created ,\n   modDate  : RawSQLValue( NOW() )\n]\nlet op = AdaptorOperation(entity)\n...\nop.changedValues = values\n\nlet affected = channel.performAdaptorOperationN(op)", 
-            "title": "SQLValue"
-        }, 
-        {
-            "location": "/embedsql/#attribute-formats", 
-            "text": "One can also inject  readformat / writeformat  SQL, e.g. to change all values\nto lowercase on writes:  writeformat=\"LOWER(TRIM(%P))\"  or case-stuff, like::  readformat=\"CASE %P WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' END\"", 
-            "title": "Attribute Formats"
-        }, 
-        {
-            "location": "/settings/", 
-            "text": "Environment Variables\n\n\n\n\nWork in progress. Stay tuned.\n\n\n\n\nLogging Level\n\n\nYou can configure the level of the global ZeeQL logger using the\n\n\nZEEQL_LOGLEVEL\n\n\n\nenvironment variable, for example in your run scheme. Valid values are:\n\n\n\n\nerror\n\n\nwarn\n\n\ninfo\n\n\ntrace\n\n\nlog", 
-            "title": "Settings"
-        }, 
-        {
-            "location": "/settings/#environment-variables", 
-            "text": "Work in progress. Stay tuned.", 
-            "title": "Environment Variables"
-        }, 
-        {
-            "location": "/settings/#logging-level", 
-            "text": "You can configure the level of the global ZeeQL logger using the  ZEEQL_LOGLEVEL  environment variable, for example in your run scheme. Valid values are:   error  warn  info  trace  log", 
-            "title": "Logging Level"
-        }, 
-        {
-            "location": "/troubleshooting/", 
-            "text": "Troubleshooting\n\n\n\n\nWork in progress. Stay tuned.\n\n\n\n\nCompilation Errors\n\n\nIf you get: \nCould not build Objective-C module 'APR'\n:\nIf you want to use the APR database drivers, install APR, e.g. using HomeBrew:\n\n\nbrew install apr-util --with-openldap --with-postgresql --with-sqlite", 
-            "title": "Troubleshooting"
-        }, 
-        {
-            "location": "/troubleshooting/#troubleshooting", 
-            "text": "Work in progress. Stay tuned.", 
-            "title": "Troubleshooting"
-        }, 
-        {
-            "location": "/troubleshooting/#compilation-errors", 
-            "text": "If you get:  Could not build Objective-C module 'APR' :\nIf you want to use the APR database drivers, install APR, e.g. using HomeBrew:  brew install apr-util --with-openldap --with-postgresql --with-sqlite", 
-            "title": "Compilation Errors"
         }, 
         {
             "location": "/about/", 
