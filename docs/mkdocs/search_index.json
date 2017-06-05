@@ -2,13 +2,23 @@
     "docs": [
         {
             "location": "/", 
-            "text": "ZeeQL Documentation\n\n\n\n\nWork in progress. Stay tuned.\n\n\n\n\nThe ZeeQL (EOF/CoreData/AR like) Database Toolkit for Swift.", 
+            "text": "ZeeQL Documentation\n\n\nZeeQL\n is a Swift ORM / database access library primarily inspired by EOF,\nand in consequence CoreData, adding some ActiveRecord concepts. \nThe framework is self contained and doesn't have any 3rd party dependencies. \nIt comes with a SQLite3 driver builtin, and APR as well as a standalone\nPostgreSQL driver as optional modules.\n\n\nThe framework can be used in either server side Swift applications or in client\napplications (iOS or macOS apps).\nIt is not quite there yet, but could potentially serve as a pure Swift CoreData\nreplacement that doesn't just work w/ SQLite3 but with other servers as well.\n\n\nProvides Choices\n\n\nUse raw SQL queries in a typesafe way:\n\n\ntry adaptor.select(\nSELECT name, count FROM pets\n) {\n  ( name: String, count: Int) in\n  print(\n\\(name): #\\(count)\n)\n}\n\n\n\n\nUse full object fetches, and prefetch relationships:\n\n\nlet objects = try datasource.fetchObjects(\n  Person\n    .where(Person.e.login.like(\nhe*\n))\n    .limit(10)\n    .prefetch(Person.e.addresses)\n    .order(by: Person.e.login)\n)\n\n\n\n\nOr partial object fetches, which still provide most of the neat stuff\nwhile avoiding fetching full objects all the time:\n\n\nlet partials = try db\n  .select(Person.e.firstname, from: Persons.self)\n   .where(Person.e.login.like(\nhe*\n))\n   .order(by: Person.e.login)\n)\n\n\n\n\nDeclare your models in neat code (either typesafe, or by using names),\nor fetch them from the database information schema,\nor design them with the Xcode CoreData modeler.\n\n\nWORK IN PROGRESS, STAY TUNED\n\n\nZeeQL is still being prepared. Please stay tuned for the release. \nIf you want to stay up to date, subscribe to the \n\nZeeQL Blog\n.", 
             "title": "Introduction"
         }, 
         {
             "location": "/#zeeql-documentation", 
-            "text": "Work in progress. Stay tuned.   The ZeeQL (EOF/CoreData/AR like) Database Toolkit for Swift.", 
+            "text": "ZeeQL  is a Swift ORM / database access library primarily inspired by EOF,\nand in consequence CoreData, adding some ActiveRecord concepts. \nThe framework is self contained and doesn't have any 3rd party dependencies. \nIt comes with a SQLite3 driver builtin, and APR as well as a standalone\nPostgreSQL driver as optional modules.  The framework can be used in either server side Swift applications or in client\napplications (iOS or macOS apps).\nIt is not quite there yet, but could potentially serve as a pure Swift CoreData\nreplacement that doesn't just work w/ SQLite3 but with other servers as well.", 
             "title": "ZeeQL Documentation"
+        }, 
+        {
+            "location": "/#provides-choices", 
+            "text": "Use raw SQL queries in a typesafe way:  try adaptor.select( SELECT name, count FROM pets ) {\n  ( name: String, count: Int) in\n  print( \\(name): #\\(count) )\n}  Use full object fetches, and prefetch relationships:  let objects = try datasource.fetchObjects(\n  Person\n    .where(Person.e.login.like( he* ))\n    .limit(10)\n    .prefetch(Person.e.addresses)\n    .order(by: Person.e.login)\n)  Or partial object fetches, which still provide most of the neat stuff\nwhile avoiding fetching full objects all the time:  let partials = try db\n  .select(Person.e.firstname, from: Persons.self)\n   .where(Person.e.login.like( he* ))\n   .order(by: Person.e.login)\n)  Declare your models in neat code (either typesafe, or by using names),\nor fetch them from the database information schema,\nor design them with the Xcode CoreData modeler.", 
+            "title": "Provides Choices"
+        }, 
+        {
+            "location": "/#work-in-progress-stay-tuned", 
+            "text": "ZeeQL is still being prepared. Please stay tuned for the release. \nIf you want to stay up to date, subscribe to the  ZeeQL Blog .", 
+            "title": "WORK IN PROGRESS, STAY TUNED"
         }, 
         {
             "location": "/about/", 

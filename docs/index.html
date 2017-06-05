@@ -65,6 +65,14 @@
             
     <li class="toctree-l2"><a href="#zeeql-documentation">ZeeQL Documentation</a></li>
     
+        <ul>
+        
+            <li><a class="toctree-l3" href="#provides-choices">Provides Choices</a></li>
+        
+            <li><a class="toctree-l3" href="#work-in-progress-stay-tuned">WORK IN PROGRESS, STAY TUNED</a></li>
+        
+        </ul>
+    
 
     </ul>
 	    </li>
@@ -110,10 +118,49 @@
             <div class="section">
               
                 <h1 id="zeeql-documentation">ZeeQL Documentation</h1>
-<blockquote>
-<p>Work in progress. Stay tuned.</p>
-</blockquote>
-<p>The ZeeQL (EOF/CoreData/AR like) Database Toolkit for Swift.</p>
+<p><strong>ZeeQL</strong> is a Swift ORM / database access library primarily inspired by EOF,
+and in consequence CoreData, adding some ActiveRecord concepts. 
+The framework is self contained and doesn't have any 3rd party dependencies. 
+It comes with a SQLite3 driver builtin, and APR as well as a standalone
+PostgreSQL driver as optional modules.</p>
+<p>The framework can be used in either server side Swift applications or in client
+applications (iOS or macOS apps).
+It is not quite there yet, but could potentially serve as a pure Swift CoreData
+replacement that doesn't just work w/ SQLite3 but with other servers as well.</p>
+<h3 id="provides-choices">Provides Choices</h3>
+<p>Use raw SQL queries in a typesafe way:</p>
+<pre><code class="swift">try adaptor.select(&quot;SELECT name, count FROM pets&quot;) {
+  ( name: String, count: Int) in
+  print(&quot;\(name): #\(count)&quot;)
+}
+</code></pre>
+
+<p>Use full object fetches, and prefetch relationships:</p>
+<pre><code class="swift">let objects = try datasource.fetchObjects(
+  Person
+    .where(Person.e.login.like(&quot;he*&quot;))
+    .limit(10)
+    .prefetch(Person.e.addresses)
+    .order(by: Person.e.login)
+)
+</code></pre>
+
+<p>Or partial object fetches, which still provide most of the neat stuff
+while avoiding fetching full objects all the time:</p>
+<pre><code class="swift">let partials = try db
+  .select(Person.e.firstname, from: Persons.self)
+   .where(Person.e.login.like(&quot;he*&quot;))
+   .order(by: Person.e.login)
+)
+</code></pre>
+
+<p>Declare your models in neat code (either typesafe, or by using names),
+or fetch them from the database information schema,
+or design them with the Xcode CoreData modeler.</p>
+<h3 id="work-in-progress-stay-tuned">WORK IN PROGRESS, STAY TUNED</h3>
+<p>ZeeQL is still being prepared. Please stay tuned for the release. 
+If you want to stay up to date, subscribe to the 
+<a href="http://zeeql.io/blog/">ZeeQL Blog</a>.</p>
               
             </div>
           </div>
@@ -152,5 +199,5 @@
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-06-05 14:57:33
+Build Date UTC : 2017-06-05 15:46:13
 -->
