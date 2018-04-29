@@ -1,9 +1,8 @@
 site_name:        ZeeQL
 site_url:         http://zeeql.io
 site_author:      ZeeZide GmbH
-copyright:        © ZeeZide GmbH 2017
+copyright:        © ZeeZide GmbH 2018
 repo_url:         https://github.com/zeeql/
-google_analytics: [ 'UA-3266252-11', 'zeeql.io' ]
   
 docs_dir:    content
 site_dir:    docs
