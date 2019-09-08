@@ -8,10 +8,10 @@ docs_dir:    content
 site_dir:    docs
 
 theme:       readthedocs
-theme_dir:   custom_theme
+#theme_dir:   custom_theme
 extra_css:   [ extra.css ]
 
-pages:
+nav:
   - 'Introduction':    'index.md'
   - 'About':           'about.md'
   
