@@ -8,7 +8,7 @@
   
   <meta name="author" content="ZeeZide GmbH">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - ZeeQL</title>
+  <title>ZeeQL Installation - ZeeQL</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
-    var mkdocs_page_url = "/about/";
+    var mkdocs_page_name = "ZeeQL Installation";
+    var mkdocs_page_input_path = "install.md";
+    var mkdocs_page_url = "/install/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -74,21 +74,9 @@
     <a class="" href="../troubleshooting/">Troubleshooting</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">About</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#contact">Contact</a></li>
-    
-
-    <li class="toctree-l2"><a href="#mkdocs">MkDocs</a></li>
-    
-
-    <li class="toctree-l2"><a href="#who">Who</a></li>
-    
-
-    </ul>
+    <a class="" href="../about/">About</a>
 	    </li>
           
         </ul>
@@ -113,10 +101,10 @@
     
       
     
-    <li>About</li>
+    <li>ZeeQL Installation</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/zeeql/edit/master/docs/about.md"
+        <a href="https://github.com/zeeql/edit/master/docs/install.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -126,33 +114,41 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="contact">Contact</h3>
-<p>Hey, we love feedback. Join the mailing list, Slack channel or just drop us
-an email to tell us why this is crap (or not?).</p>
-<ul>
-<li><a href="https://groups.google.com/d/forum/mod_swift">Mailing List</a></li>
-<li><a href="http://slack.noze.io">Slack</a></li>
-<li><a href="mailto:info@zeeql.io">info@zeeql.io</a></li>
-</ul>
-<h3 id="mkdocs">MkDocs</h3>
-<p>Built with <a href="http://www.mkdocs.org">MkDocs</a> 
-using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> 
-provided by <a href="https://readthedocs.org">Read the Docs</a>.</p>
-<h3 id="who">Who</h3>
-<p>ZeeQL is brought to you by the
-<a href="http://zeezide.de">ZeeZide</a> GmbH.
-<a href="http://zeezide.com/contact.html">Imprint</a>.</p>
+                <h1 id="zeeql-installation">ZeeQL Installation</h1>
+<blockquote>
+<p>WORK IN PROGRESS, STAY TUNED</p>
+</blockquote>
+<h2 id="install-on-linux">Install on Linux</h2>
+<p>Ubuntu packages required (assuming you have Swift 3 installed already):</p>
+<pre><code>sudo apt-get update
+sudo apt-get install libsqlite3-dev
+</code></pre>
+<p>To compile the standalone PostgreSQL driver:</p>
+<pre><code>sudo apt-get install libpq-dev
+</code></pre>
+<p>When using mod_dbd, mod_dbd drivers can be installed as desired:</p>
+<pre><code>sudo apt-get install \
+  libaprutil1-dbd-sqlite3 \
+  libaprutil1-dbd-pgsql
+</code></pre>
+<blockquote>
+<p>WORK IN PROGRESS, STAY TUNED</p>
+</blockquote>
+<h2 id="apr-driver">APR Driver</h2>
+<h3 id="homebrew">Homebrew</h3>
+<p>Select the mod_dbd drivers you need:</p>
+<pre><code>brew reinstall apr-util \
+      --with-sqlite \
+        --with-mysql \
+        --with-postgresql
+</code></pre>
+<blockquote>
+<p>WORK IN PROGRESS, STAY TUNED</p>
+</blockquote>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../troubleshooting/" class="btn btn-neutral" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -179,8 +175,6 @@ provided by <a href="https://readthedocs.org">Read the Docs</a>.</p>
       
           <a href="https://github.com/zeeql/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
-      
-        <span><a href="../troubleshooting/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

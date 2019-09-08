@@ -1,52 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
     <url>
      <loc>http://zeeql.io/</loc>
-     <lastmod>2018-04-29</lastmod>
+     <lastmod>2019-09-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>http://zeeql.io/design/</loc>
-     <lastmod>2018-04-29</lastmod>
+     <lastmod>2019-09-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>http://zeeql.io/embedsql/</loc>
-     <lastmod>2018-04-29</lastmod>
+     <lastmod>2019-09-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>http://zeeql.io/settings/</loc>
-     <lastmod>2018-04-29</lastmod>
+     <lastmod>2019-09-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>http://zeeql.io/troubleshooting/</loc>
-     <lastmod>2018-04-29</lastmod>
+     <lastmod>2019-09-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>http://zeeql.io/about/</loc>
-     <lastmod>2018-04-29</lastmod>
+     <lastmod>2019-09-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
 </urlset>

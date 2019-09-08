@@ -9,3 +9,4 @@ If you want to use the APR database drivers, install APR, e.g. using HomeBrew:
 
     brew install apr-util --with-openldap --with-postgresql --with-sqlite
 
+> Update: The drivers are not available anymore in Brew.
